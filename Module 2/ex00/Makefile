@@ -1,11 +1,11 @@
 CC = c++
-NAME = 
-SRCS = 
+NAME = a.out
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra #-std=c++98 -fsanitize=address -g3
+CXXFLAGS = -Wall -Werror #-Wextra -std=c++98 -fsanitize=address -g3
 
 all: $(NAME)
-
+ 
 $(NAME): $(OBJS)
 	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
