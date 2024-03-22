@@ -1,64 +1,66 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
 int main()
 {
-	// ----- TESTING EXCEPTIONS OF AFormS
-		// Initializing for with a value outside of scope, 
-		// Edit the Scope variable for x > 150 or x < 1 values to catch exceptions
-		// For Normal Init, Value should be 1 <= x <= 150
+    // Create bureaucrats with different grades
+    Bureaucrat Pro("PRO", 1);
+    Bureaucrat Noob("Noob", 150);
 
-	int scope;
-	
-	scope = 157;
-	try
-	{
-		Bureaucrat joseph("Joseph", 67);
-		AForm frmA("1A", 65, scope);
+    // Create forms
+    ShrubberyCreationForm shrubberyForm("Home");
+    RobotomyRequestForm robotomyForm("Robot");
+    PresidentialPardonForm presidentialForm("Criminal");
+
+    // Attempt to sign and execute forms with high grade bureaucrat
+    std::cout << "\n--- High Grade Bureaucrat ---\n" << std::endl << std::endl;
+
+	std::cout << "Attemting to execute a non signed Form, Result :" << std::endl;
+	try {
+    	Pro.executeForm(shrubberyForm);
 	}
-	catch(const AForm::GradeTooHighException& e)
+	catch (Form::FormIsNotSignedException& e)
 	{
-		std::cerr << e.what() << std::endl;
-	}
-	catch(const AForm::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	// ----- TESTING << OPERATOR
-
-	AForm frmB("2A", 25, 10);
-
-	std::cout << frmB << std::endl;
-
-	// ----- TESTING beSigned()
-
-		// Declaring Bureaucrat
-
-	Bureaucrat Noob("Noobie", 69);
-
-		// Testing the Exception
-
-	try
-	{
-		frmB.beSigned(Noob);
-	}
-	catch (AForm::GradeTooLowException& e)
-	{
-		std::cerr << "Failure to sign due to the reason : \"" << e.what() << "\"" << std::endl;
+		std::cout << "Form Wasn't executed because :\n\t" << e.what() << std::endl;
 	}
 
-	// ----- TESTING 
+	std::cout << "Proceeding..." << std::endl;
 
-		// Declaring New Bureaucrat
+	std::cout << std::endl;
 
-	Bureaucrat Pro("Chinwi", 2);
+    Pro.signForm(shrubberyForm);
+    Pro.executeForm(shrubberyForm);
 
-		// Testing in case of Success
+	std::cout << std::endl;
 
-	Pro.signAForm(frmB);
+    Pro.signForm(robotomyForm);
+    Pro.executeForm(robotomyForm);
 
-		// Testing in case of failure
+	std::cout << std::endl;
 
-	Noob.signAForm(frmB);
+    Pro.signForm(presidentialForm);
+    Pro.executeForm(presidentialForm);
+
+	std::cout << std::endl;
+
+    // Attempt to sign and execute forms with low grade bureaucrat
+    std::cout << "\n--- Low Grade Bureaucrat ---\n" << std::endl << std::endl;
+    Noob.signForm(shrubberyForm);
+    Noob.executeForm(shrubberyForm);
+
+	std::cout << std::endl;
+
+    Noob.signForm(robotomyForm);
+    Noob.executeForm(robotomyForm);
+
+	std::cout << std::endl;
+
+    Noob.signForm(presidentialForm);
+    Noob.executeForm(presidentialForm);
+
+	std::cout << std::endl;
 
     return 0;
 }

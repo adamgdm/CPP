@@ -20,11 +20,11 @@ class Form
 		Form(const Form &other);
 		~Form();
 		Form &operator=(const Form &other); 
-
-		std::string getName();
-		bool isFormSigned();
-		int getReqSignGrade();
-		int getReqExecGrade();
+		
+		std::string getName() const;
+		bool isFormSigned() const;
+		int getReqSignGrade() const;
+		int getReqExecGrade() const;
 
 		void beSigned(const Bureaucrat &p);
 		void signForm();

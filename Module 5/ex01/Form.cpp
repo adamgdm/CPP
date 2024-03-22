@@ -28,25 +28,26 @@ Form &Form::operator=(const Form &other)
 	return (*this);
 }
 
-std::string Form::getName()
+std::string Form::getName() const
 {
 	return (this->name);
 }
 
-bool Form::isFormSigned()
+bool Form::isFormSigned() const
 {
 	return (this->isSigned);
 }
 
-int Form::getReqSignGrade()
+int Form::getReqSignGrade() const
 {
 	return (this->reqSignGrade);
 }
 
-int Form::getReqExecGrade()
+int Form::getReqExecGrade() const
 {
 	return (this->reqExecGrade);
 }
+
 
 void Form::beSigned(const Bureaucrat &p)
 {
