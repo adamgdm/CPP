@@ -1,6 +1,6 @@
 # C++ Modules Documentation
 
-## Module 1: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
+## Module 00: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
 
 ### Namespaces
 - Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when using libraries.
@@ -129,7 +129,7 @@ class MyClass
 - Const variables cannot be modified after they are initialized.
 - Const member functions are functions that do not modify the data members of the class.
 
-## Module 2: Memory allocation, pointers to members, references, switch statements
+## Module 01: Memory allocation, pointers to members, references, switch statements
 
 ### Memory Allocation
 
@@ -224,7 +224,7 @@ if (expression == value1)
 }
 ```
 
-## Module 3: Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
+## Module 02: Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
 
 ### Ad-hoc Polymorphism
 
@@ -471,4 +471,271 @@ MyClass::~MyClass()
 
 }
 ```
+
+## Module 03: Inheritance 
+
+### Inheritance
+
+- Inheritance is a key concept in object-oriented programming, It allows us to create a new class that is based on an existing one.
+- The new class inherits the properties and behaviors of the existing class.
+- The existing class is called the parent class or base class.
+- The new class is called the child class or derived class.
+
+Example:
+```
+
+// We will attempt to create a class named Phone
+// The Phone class will have a Name, Model, and Price data members
+// The Phone class will also have Call and Text member functions
+
+// This class is going to serve as the base class (parent class)
+
+class Phone
+{
+    private:
+        std::string Name;
+        std::string Model;
+        int Price;
+    public:
+        void Call();
+        void Text();       
+}
+
+// Now, we will create two classes that will inherit from the Phone class
+// The first class is the iPhone class
+// The iPhone class will inherit the properties and behaviors of the Phone class
+
+class iPhone : public Phone
+{
+
+}
+
+// The second class is the Samsung class
+
+class Samsung : public Phone
+{
+
+}
+
+```
+
+- As we can see from the example above, the syntax for inheriting from a class is:
+```
+class DerivedClass : accessSpecifier BaseClass
+{
+    // code here
+}
+```
+
+- The access specifier can be `public`, `protected`, or `private`.
+
+### Access Specifiers
+
+- Access specifiers are used to control the access to the members of a class.
+
+#### Public Access Specifier
+
+- Members that are declared as public are accessible from outside the class.
+- Public members can be accessed by objects of the class and by derived classes.
+
+#### Protected Access Specifier
+
+- Members that are declared as protected are accessible from within the class and by derived classes.
+- Protected members are not accessible from outside the class.
+
+#### Private Access Specifier
+
+- Members that are declared as private are only accessible from within the class.
+- Private members are not accessible from outside the class or by derived classes.
+
+### Access specifiers in Inheritance
+
+- The access specifier in the inheritance declaration specifies the access level of the base class members in the derived class.
+- If the access specifier is `public`, the base class members are inherited as public members in the derived class.
+- If the access specifier is `protected`, the base class members are inherited as protected members in the derived class, which means they are not accessible from outside the class but are accessible from within the class and by derived classes.
+- If the access specifier is `private`, the base class members are inherited as private members in the derived class, which means they are not accessible from outside the class or by derived classes.
+
+To visualize this better, let's consider the following example:
+```
+class Base {
+public:
+    int publicMember;
+protected:
+    int protectedMember;
+private:
+    int privateMember;
+};
+
+class Derived_Public : public Base {
+    // publicMember is accessible
+    // protectedMember is accessible
+    // privateMember is not accessible
+};
+
+class Derived_Protected : protected Base {
+    // publicMember becomes protected
+    // protectedMember becomes protected
+    // privateMember is not accessible
+};
+
+class Derived_Private : private Base {
+    // publicMember becomes private
+    // protectedMember becomes private
+    // privateMember is not accessible
+};
+```
+
+### Types of Inheritance
+
+#### Single Inheritance
+
+- Single inheritance is a type of inheritance in which a class inherits from only one base class.
+- Single inheritance is the most common type of inheritance.
+
+#### Multiple Inheritance
+
+- Multiple inheritance is a type of inheritance in which a class inherits from more than one base class.
+- The syntax for multiple inheritance is:
+```
+class Derived : public Base1, public Base2
+{
+    // code here
+}
+```
+
+#### Multilevel Inheritance
+
+- Multilevel inheritance is a type of inheritance in which a class inherits from a base class, and the derived class is used as a base class for another class.
+
+Example:
+```
+class Base {
+    // code here
+};
+
+class Derived1 : public Base {
+    // code here
+};
+
+class Derived2 : public Derived1 {
+    // code here
+}
+```
+
+#### Hierarchical Inheritance
+
+- Hierarchical inheritance is a type of inheritance in which more than one derived class inherits from a single base class.
+
+Example:
+```
+class Base {
+    // code here
+};
+
+class Derived1 : public Base {
+    // code here
+};
+
+class Derived2 : public Base {
+    // code here
+}
+```
+
+### Why use Inheritance?
+
+- Inheritance allows us to reuse code, which reduces code duplication and makes the code easier to maintain. It also allows us to keep our code organized and modular. It can also help us achieve polymorphism, where objects of different classes can be treated as objects of the same base class.
+
+## Module 04: Subtype polymorphism, abstract classes, interfaces
+
+### Subtype Polymorphism
+
+- Subtype polymorphism is a type of polymorphism in which objects of different classes can be treated as objects of the same base class.
+- Subtype polymorphism allows us to write code that is more flexible and reusable.
+
+Example:
+```
+class Animal {
+    public:
+        virtual void makeSound() = 0;
+};
+
+class Dog : public Animal {
+    public:
+        void makeSound() {
+            std::cout << "Woof!" << std::endl;
+        }
+};
+
+class Cat : public Animal {
+    public:
+        void makeSound() {
+            std::cout << "Meow!" << std::endl;
+        }
+};
+```
+
+- In the example above, the `Animal` class is an abstract class that has a pure virtual function `makeSound()`.
+- The `Dog` and `Cat` classes are derived from the `Animal` class and implement the `makeSound()` function.
+- The `makeSound()` function is a virtual function that is overridden by the `Dog` and `Cat` classes.
+
+### Abstract Classes
+
+- An abstract class is a class that is designed and intended to be used as a base class. This last is not meant to be instantiated.
+- Abstract means that it's not complete and missing functionality that needs to be implemented by derived classes.
+- Abstract classes can have pure virtual functions, which are functions that have no implementation and must be overridden by derived classes.
+
+#### Virtual Keyword
+
+- The `virtual` keyword is used to declare a member function as virtual.
+- Virtual functions are functions that can be overridden by derived classes.
+- Virtual functions are used to achieve polymorphism.
+
+#### Pure Virtual Functions
+
+- A pure virtual function is a virtual function that has no implementation.
+- Pure virtual functions are declared using the `= 0` syntax.
+```
+class Animal {
+    public:
+        virtual void makeSound() = 0;
+};
+```
+
+- A class that contains at least one pure virtual function is called an abstract class, which means that it cannot be instantiated. And the compiler will throw an error if we try to do so.
+
+### Interfaces
+
+- An interface is a class that contains only pure virtual functions.
+- An interface is used to define a contract for classes that implement it.
+- Interfaces are used to achieve polymorphism and code reusability.
+
+Example:
+```
+class Device {
+    public:
+        virtual void turnOn() = 0;
+        virtual void turnOff() = 0;
+};
+ 
+class Phone : public Device {
+    public:
+        void turnOn() {
+            std::cout << "Phone is turning on" << std::endl;
+        }
+        void turnOff() {
+            std::cout << "Phone is turning off" << std::endl;
+        }
+};
+
+class TV : public Device {
+    public:
+        void turnOn() {
+            std::cout << "TV is turning on" << std::endl;
+        }
+        void turnOff() {
+            std::cout << "TV is turning off" << std::endl;
+        }
+};
+```
+
 
