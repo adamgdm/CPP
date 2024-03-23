@@ -20,25 +20,26 @@ int main()
         Form* form = intern.makeForm(validNames[i], "target");
         if (form != NULL)
         {
-            std::cout << "Successfully created " << validNames[i] << std::endl;
+            std::cout << "Successfully created " << validNames[i] << std::endl << std::endl;
 			delete form;
         }
         else
         {
-            std::cout << RED << "Failed to create " << validNames[i] << RESET << std::endl;
+            std::cout << RED << "Failed to create " << validNames[i] << RESET << std::endl << std::endl;
         }
     }
 
     // Test with invalid form name
-    Form* form = intern.makeForm("Invalid Form Name", "target");
+    std::string invalidName = "Unknown";
+    Form* form = intern.makeForm(invalidName, "target");
     if (form != NULL)
     {
-        std::cout << "Successfully created Invalid Form Name" << std::endl;
+        std::cout << GREEN << "Successfully created " << RESET << invalidName << std::endl << std::endl;
         delete form;
     }
     else
     {
-        std::cout << RED << "Failed to create Invalid Form Name" << RESET << std::endl;
+        std::cout << RED << "Failed to create " << RESET << invalidName << std::endl << std::endl;
     }
     return 0;
 }

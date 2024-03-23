@@ -5,7 +5,7 @@ int main()
 	// testing too high grade
     try
     {
-        Bureaucrat b1("John Doe", 0);
+        Bureaucrat b1("Chinwi", 0);
     }
     catch (std::exception &e)
     {
@@ -15,7 +15,7 @@ int main()
 	// testing too low grade
     try
     {
-        Bureaucrat b2("Jane Doe", 151);
+        Bureaucrat b2("essssa3id", 151);
     }
     catch (std::exception &e)
     {
@@ -26,7 +26,8 @@ int main()
 	// testing implementation of the increment and decrement
     try
     {
-        Bureaucrat b3("Average Joe", 75);
+        Bureaucrat b3("Lmki tourabi", 75);
+        // operator << overload
         std::cout << b3 << std::endl;
 
         b3.incrementGrade();

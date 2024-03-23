@@ -57,7 +57,10 @@ Form *Intern::makeForm(std::string name, std::string target)
 	while (i < 3)
 	{
 		if (name == names[i])
+		{
+			std::cout << "Intern creates " << name << " Form" << std::endl;
 			return Form[i](target);
+		}
 		i++;
 	}
 	std::cout << RED << "Invalid Form Name!" << RESET << std::endl;

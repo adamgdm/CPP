@@ -17,13 +17,14 @@ int main()
     // Attempt to sign and execute forms with high grade bureaucrat
     std::cout << "\n--- High Grade Bureaucrat ---\n" << std::endl << std::endl;
 
-	std::cout << "Attemting to execute a non signed Form, Result :" << std::endl;
-	try {
+	std::cout << "Attemting to execute a non signed Form, Result :" << std::endl << std::endl;
+	try 
+    {
     	Pro.executeForm(shrubberyForm);
 	}
 	catch (Form::FormIsNotSignedException& e)
 	{
-		std::cout << "Form Wasn't executed because :\n\t" << e.what() << std::endl;
+		std::cout << "Form Wasn't executed because :\t" << e.what() << std::endl;
 	}
 
 	std::cout << "Proceeding..." << std::endl;

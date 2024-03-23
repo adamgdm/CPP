@@ -8,7 +8,7 @@ int main()
 
 	int scope;
 	
-	scope = 157;
+	scope = 148;
 	try
 	{
 		Bureaucrat joseph("Joseph", 67);
@@ -27,7 +27,9 @@ int main()
 
 	Form frmB("2A", 25, 10);
 
-	std::cout << frmB << std::endl;
+	std::cout << "Testing << operator : " << std::endl;
+
+	std::cout << "	" << frmB << std::endl << std::endl;
 
 	// ----- TESTING beSigned()
 
@@ -37,13 +39,15 @@ int main()
 
 		// Testing the Exception
 
+	std::cout << "Testing beSigned() : " << std::endl;
+
 	try
 	{
 		frmB.beSigned(Noob);
 	}
 	catch (Form::GradeTooLowException& e)
 	{
-		std::cerr << "Failure to sign due to the reason : \"" << e.what() << "\"" << std::endl;
+		std::cerr << "	Failure to sign due to the reason : \"" << e.what() << "\"" << std::endl << std::endl;;
 	}
 
 	// ----- TESTING 
@@ -53,6 +57,8 @@ int main()
 	Bureaucrat Pro("Chinwi", 2);
 
 		// Testing in case of Success
+
+	std::cout << "Testing signForm() in both case of success and failure : " << std::endl  << std::endl;;
 
 	Pro.signForm(frmB);
 

@@ -2,7 +2,7 @@ CC = c++
 NAME = Bureaucrat
 SRCS = main.cpp Bureaucrat.cpp
 OBJS = $(SRCS:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address -g3
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address -g3
 
 all: $(NAME)
 

@@ -71,9 +71,9 @@ void Bureaucrat::executeForm(Form const & form)
 	if (form.getReqExecGrade() >= this->grade)
 	{
 		std::cout << YELLOW << "Bureaucrat \"" << RESET << this->name << YELLOW << "\" is executing \"" 
-			<< RESET << form.getName() << "\"." <<std::endl;
+			<< RESET << form.getName() << "\"." << std::endl;
 		form.execute(*this);
-		std::cout << GREEN << "Status: Executed" << RESET << std::endl;
+		std::cout << this->name << GREEN << " Executed " << RESET << form.getName() << std::endl;
 	}
 	else
 		std::cout << RED << "Bureaucrat \"" << RESET << this->name << RED << "\" cannot execute \"" 

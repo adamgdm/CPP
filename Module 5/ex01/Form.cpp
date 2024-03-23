@@ -2,6 +2,7 @@
 
 Form::Form(std::string name, const int reqSign, const int reqExec) : name(name), reqSignGrade(reqSign), reqExecGrade(reqExec)
 {
+	this->isSigned = false;
 	if (reqExecGrade < 1 || reqSignGrade < 1)
 		throw Form::GradeTooHighException();
 	if (reqExecGrade > 150 || reqSignGrade > 150)
@@ -73,3 +74,4 @@ std::ostream &operator<<(std::ostream& os, Form &doc)
 		<< "\", Required Grade to Execute : \"" << doc.getReqExecGrade();
 	return (os);
 }
+
