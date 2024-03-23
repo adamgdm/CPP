@@ -170,7 +170,8 @@ The syntax for delcaring a pointer to a member function is:
 class MyClass 
 {
     public:
-        void myFunction() {
+        void myFunction() 
+        {
             // code here
         }
 }
@@ -198,7 +199,8 @@ int &y = x;
 
 - The syntax for a switch statement is:
 ```
-switch (expression) {
+switch (expression) 
+{
     case value1:
         // code here
         break;
@@ -211,11 +213,262 @@ switch (expression) {
 ```
 - This code is equivalent to:
 ```
-if (expression == value1) {
+if (expression == value1) 
+{
     // code here
-} else if (expression == value2) {
+} else if (expression == value2) 
+{
     // code here
 } else {
     // code here
 }
 ```
+
+## Module 3: Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
+
+### Ad-hoc Polymorphism
+
+#### What is Polymorphism in the first place?
+
+- Polymorphism is the ability of a function to behave differently depending on the arguments passed to it.
+- Polymorphism is a key concept in object-oriented programming.
+- For Analogy's sake, think of polymorphism as a person who can take on different roles depending on the situation.
+- In C++, Polymorphism of function can be achieved by declaring multiple functions with the same name but different parameters.
+- This is known as function overloading.
+
+```
+class MyClass 
+{
+    public:
+        void myFunction(int x) 
+        {
+            // code here
+        }
+        void myFunction(int x, int y) 
+        {
+            // code here
+        }
+    // The myFunction function is overloaded because it has two definitions with different parameters.
+    // The compiler will choose the appropriate function based on the arguments passed to it.
+}
+
+```
+
+#### Ad-hoc Meaning
+
+- Ad-hoc means "for this purpose only".
+- Ad-hoc polymorphism is a type of polymorphism in which a function can behave differently depending on the arguments passed to it.
+- Ad-hoc polymorphism is achieved by function overloading and operator overloading.
+
+### Operator Overloading
+
+- Operator overloading is a type of ad-hoc polymorphism in which operators are overloaded to work with user-defined data types.
+- Operator overloading allows us to define the behavior of operators for user-defined data types.
+- Operator overloading is achieved by defining a function that is called when an operator is used with a user-defined data type.
+
+The syntax for operator overloading is:
+```
+class MyClass 
+{
+    public:
+        MyClass &operator+(const MyClass &obj) 
+        {
+            MyClass result;
+            result.x = this->x + obj.x;
+            result.y = this->y + obj.y;
+            return result;
+        }
+    
+    // This is an example of operator overloading for the + operator.
+    // The function is called when the + operator is used with two objects of the MyClass class.
+    // The same syntax can be used for other operators such as -, *, /, etc.
+}
+```
+
+### Orthodox Canonical Class Form
+
+- The Orthodox Canonical Class Form is a set of rules that define how a class should be implemented in C++.
+- The Orthodox Canonical Class Form consists of four parts:
+    - The default constructor
+    - The copy constructor
+    - The copy assignment operator
+    - The destructor
+
+#### The Default Constructor
+
+- The default constructor is a constructor that is called when an object is created without any arguments.
+- The default constructor is used to initialize the data members of the class.
+
+The syntax for defining a default constructor is:
+```
+class MyClass 
+{
+    public:
+        MyClass() 
+        {
+            // code here
+        }
+}
+```
+
+- The default constructor does not take any arguments and does not have a return type.
+- The default constructor can be overloaded to accept arguments.
+
+In case of defining a default constructor outside the class definition, the syntax is:
+```
+class MyClass 
+{
+    public:
+        MyClass();
+}
+
+MyClass::MyClass() 
+{
+    // code here
+}
+```
+
+#### The Copy Constructor
+
+- The copy constructor is a constructor that is called when an object is created as a copy of another object.
+- The copy constructor is used to initialize an object with the values of another object.
+- The copy constructor is called when an object is passed by value to a function, returned by value from a function, or when an object is created as a copy of another object.
+
+The syntax for defining a copy constructor is:
+```
+class MyClass 
+{
+    public:
+        MyClass(const MyClass &obj) 
+        {
+            // code here
+        }
+}
+```
+
+- Like the default constructor, the copy constructor does not have a return type and can be overloaded to accept arguments and its syntax if defined outside the class definition is:
+```
+class MyClass 
+{
+    public:
+        MyClass(const MyClass &obj);
+}
+
+MyClass::MyClass(const MyClass &obj) 
+{
+    // code here
+}
+```
+
+#### The Copy Assignment Operator
+
+- The copy assignment operator is an operator that is called when an object is assigned the value of another object.
+- The copy assignment operator is used to assign the values of one object to another object.
+- The copy assignment operator is called when an object is assigned the value of another object using the `=` operator.
+- The difference between the copy constructor and the copy assignment operator is that the copy constructor is called when an object is created as a copy of another object, while the copy assignment operator is called when an object is assigned the value of another object. Otherwise, they are very similar.
+
+The syntax for defining a copy assignment operator is:
+```
+class MyClass 
+{
+    public:
+        MyClass &operator=(const MyClass &obj) 
+            {
+                // code here
+                return *this;
+            }
+}
+```
+
+- The copy assignment operator returns a reference to the object that is being assigned the value.
+- The copy assignment operator can be overloaded to accept arguments and its syntax if defined outside the class definition is:
+```
+class MyClass 
+{
+    public:
+        MyClass &operator=(const MyClass &obj);
+}
+
+MyClass &MyClass::operator=(const MyClass &obj) 
+{
+    // code here
+    return *this;
+}
+```
+
+#### The Destructor
+
+- The destructor is a special member function that is called when an object is destroyed.
+- The destructor is used to release resources that were allocated by the object.
+- The destructor is called when an object goes out of scope, is deleted, or when the program terminates.
+
+The syntax for defining a destructor is:
+```
+class MyClass 
+{
+    public:
+        ~MyClass() 
+        {
+            // code here
+        }
+}
+```
+
+- The destructor does not take any arguments and does not have a return type.
+
+In case of defining a destructor outside the class definition, the syntax is:
+```
+class MyClass 
+{
+    public:
+        ~MyClass();
+}
+
+MyClass::~MyClass() 
+{
+    // code here
+}
+```
+
+#### Summary
+
+- The Orthodox Canonical Class Form is a set of rules that define how a class should be implemented in C++.
+
+An orthodox class should be implemented as follows:
+```
+class MyClass 
+{
+    private:
+        int x;
+        int y;
+    public:
+        MyClass(); // default constructor
+        MyClass(const MyClass &obj); // copy constructor
+        MyClass &operator=(const MyClass &obj); // copy assignment operator
+        ~MyClass(); // destructor
+}
+
+MyClass::MyClass() 
+{
+
+}
+
+MyClass::MyClass(const MyClass &obj) 
+{
+    this->x = obj.x;
+    this->y = obj.y;
+}
+
+MyClass &MyClass::operator=(const MyClass &obj) 
+{
+    this->x = obj.x;
+    this->y = obj.y;
+    return *this;
+}
+
+MyClass::~MyClass() 
+{
+
+}
+```
+
