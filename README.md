@@ -738,4 +738,107 @@ class TV : public Device {
 };
 ```
 
+## Module 05: Exceptions
 
+### Exceptions 
+
+- Exceptions are a new way of handling errors and exceptional conditions in C++, it allows us to seperate error handling code from the normal code. Moreover, it allows us to write cleaner and more maintainable code.
+- Exceptions are thrown when an error occurs and are caught by an exception handler.
+
+The syntax for doing so is:
+```
+try 
+{
+    // code that may throw an exception
+    throw 10; // throw an exception
+}
+catch (int e) 
+{
+    // exception handler
+    std::cout << "An exception occurred. Exception number: " << e << std::endl;
+}
+```
+
+- The `try` block contains the code that may throw an exception, this block is necessary for exception handling.
+- The `throw` keyword is used to throw an exception. In case an error occurs, we can throw an exception of any type.
+- The `catch` block is used to catch the exception and handle it. The catch block takes an argument that specifies the type of exception that it can catch. Note that the catch block cannot catch an exception unless there is a try before it.
+
+In case we want to catch all exceptions, we can use the `catch` block without any arguments:
+```
+try 
+{
+    // code that may throw an exception
+    throw 10; // throw an exception
+}
+catch (...) 
+{
+    // catch all exceptions
+    std::cout << "An exception occurred." << std::endl;
+}
+```
+
+## Module 06: C++ Casts
+
+- Casting is the process of converting one data type to another without changing the actual value.
+- We can use type casting to convert one data type to another, from an integer to a float, from a float to an integer, and so on.
+- This works by telling the compiler to treat a variable as a different type of variable.
+
+Example:
+
+- Let's say we have an char variable `c` and we want to convert it to an int variable `i`. this will will work by telling the compiler to treat the char variable as an int variable. Since the ascii value of the char variable is 65, the int variable will be 65.
+
+- There are four types of casts in C++:
+    - Static Cast
+    - Dynamic Cast
+    - Const Cast
+    - Reinterpret Cast
+
+### Static Cast
+
+- Static cast is the most commonly used cast in C++.
+- Static cast is used at compile time to convert one data type to another, it is used to convert between related types only. For example, converting an int to a float, or a float to an int. It cannot be used to convert between let's say a pointer to an integer. By related types, we mean types that are compatible with each other in terms of data representation.
+- Static cast is not safe, it does not perform any runtime checks to ensure that the conversion is valid.
+
+- The syntax for static cast is:
+```
+int i = 10;
+float f = static_cast<float>(i);
+```
+
+### Dynamic Cast
+
+- Dynamic cast is used to perform safe downcasting of pointers and references.
+- Dynamic cast is a runtime cast, it can be thought of as a function that checks if the conversion is valid before performing it.
+- Dynamic cast is used to convert a base class pointer or reference to a derived class pointer or reference.
+- Dynamic cast returns a null pointer if the conversion is not valid.
+- Dynamic cast is safe
+
+- The syntax for dynamic cast is:
+```
+Base *base = new Derived();
+Derived *derived = dynamic_cast<Derived*>(base);
+```
+
+### Const Cast
+
+- Const cast is used to add or remove the const qualifier from a variable.
+- Const cast is used to cast away the constness of a variable.
+- Const cast is not safe, it can be used to modify a const variable.
+
+- The syntax for const cast is:
+```
+const int x = 10;
+int y = const_cast<int>(x);
+```
+
+### Reinterpret Cast
+
+- Reinterpret cast is used to convert one pointer type to another pointer type, it is used to convert between unrelated types.
+- Reinterpret cast is not safe, it does not perform any checks to ensure that the conversion is valid, it should only be used when we are sure that the conversion is valid.
+- Reinterpret cast is used to convert between unrelated types, such as converting a pointer to an integer.
+
+- The syntax for reinterpret cast is:
+```
+int i = 10;
+char *c = reinterpret_cast<char*>(&i);
+```
