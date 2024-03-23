@@ -1,5 +1,16 @@
 # C++ Modules Documentation
 
+### Table of Contents
+
+- [Module 00: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff](#module-00-namespaces-classes-member-functions-stdio-streams-initialization-lists-static-const-and-some-other-basic-stuff)
+- [Module 01: Memory allocation, pointers to members, references, switch statements](#module-01-memory-allocation-pointers-to-members-references-switch-statements)
+- [Module 02: Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form](#module-02-ad-hoc-polymorphism-operator-overloading-and-orthodox-canonical-class-form)
+- [Module 03: Inheritance](#module-03-inheritance)
+- [Module 04: Subtype polymorphism, abstract classes, interfaces](#module-04-subtype-polymorphism-abstract-classes-interfaces)
+- [Module 05: Exceptions](#module-05-exceptions)
+- [Module 06: C++ Casts](#module-06-c-casts)
+
+
 ## Module 00: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
 
 ### Namespaces
