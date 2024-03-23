@@ -12,13 +12,12 @@ ScalarConverter::~ScalarConverter()
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other)
 {
-	(*this) = other;
+    (void) other;
 }
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
-	if (this != &other)
-		(*this) = other;
+    (void) other;
 	return (*this);
 }
 
@@ -58,6 +57,12 @@ bool isValidNumber(const char* str)
 bool isValidNumberF(const char* str)
 {
 	int i = 0;
+    char *end;
+    double num = std::strtod(str, &end);
+
+    if (num == INFINITY || num == -INFINITY || num != num) {
+        return false;
+    }
     while (str[i] != '\0') {
         if (str[i+1] == '\0' && (str[i] == 'f' || str[i] == 'F')) {
             ++i;
@@ -79,35 +84,29 @@ char ScalarConverter::convertToChar(const std::string &str)
     char* end;
     double num = std::strtol(str.c_str(), &end, 10);
 
-    if (end == str.c_str() || !isValidNumberF(end)) {
+    if (end == str.c_str() || !(isValidNumberF(end)))
         throw std::invalid_argument("Invalid float: " + str);
-    }
 	return static_cast<char>(num);
 }
 
 int ScalarConverter::convertToInt(const std::string &str)
 {
-	char* end;
+    char* end;
     double num = std::strtod(str.c_str(), &end);
 
-	std::
-	
-
-    if (end == str.c_str() || !isValidNumberF(end)) {
+    if (end == str.c_str() || (*end != '\0' && *end != 'f' && *end != 'F') || (*(end + 1) != '\0'))
         throw std::invalid_argument("Invalid int: " + str);
-    }
-	return (num);
+    if (num < INT_MIN || num > INT_MAX || num != num)
+        throw std::invalid_argument("Invalid int: " + str);
+    return static_cast<int>(num);
 }
-
 float ScalarConverter::convertToFloat(const std::string &str)
 {
     char* end;
     double num = std::strtod(str.c_str(), &end);
 
-    if (end == str.c_str() || !isValidNumber(end)) {
+    if (end == str.c_str() || !isValidNumber(end))
         throw std::invalid_argument("Invalid float: " + str);
-    }
-
     return static_cast<float>(num);
 }
 
@@ -116,63 +115,119 @@ double ScalarConverter::convertToDouble(const std::string &str)
 	char* end;
     double num = std::strtod(str.c_str(), &end);
 
-    if (end == str.c_str() || !isValidNumber(end)) {
+    if (end == str.c_str() || !isValidNumber(end))
         throw std::invalid_argument("Invalid double: " + str);
-    }
 	return (num);
+}
+void printingMachine(char* c, int* i, float* f, double* d)
+{
+    if (c && *c > 31 && *c != 127)
+        std::cout << "char: '" << *c << "\'" << std::endl;
+    else if (c)
+        std::cout << "char: Non displayable" << std::endl;
+    else
+        std::cout << "char: impossible" << std::endl;
+
+    if (i)
+        std::cout << "int: " << *i << std::endl;
+    else
+        std::cout << "int: impossible" << std::endl;
+
+    if (f)
+        std::cout << std::fixed << std::setprecision(1) << "float: " << *f << "f" << std::endl;
+    else
+        std::cout << "float: impossible" << std::endl;
+
+    if (d)
+        std::cout << std::fixed << std::setprecision(1) << "double: " << *d << std::endl;
+    else
+        std::cout << "double: impossible" << std::endl;
 }
 
 void ScalarConverter::convert(const std::string &str)
 {
-	char	c;
-	int		i;
-	float	f;
-	double	d;
+    char    c;
+    int     i;
+    float   f;
+    double  d;
+    char*   cp = NULL;
+    int*    ip = NULL;
+    float*  fp = NULL;
+    double* dp = NULL;
 
-	// CHARACTER CONVERSION
-    try 
-	{
-        c = convertToChar(str);
-        if (c > 31 && c != 127)
-            std::cout << "char: '" << c << "\'" << std::endl;
-        else
-            std::cout << "char: Non displayable" << std::endl;
-    } 
-	catch(...) 
-	{
-        std::cout << "char: impossible" << std::endl;
+    if (str.length() == 1 && !isdigit(str[0]))
+    {
+        c = str[0];
+        cp = &c;
+        try
+        {
+            i = static_cast<int>(c);
+            ip = &i;
+        }
+        catch(...)
+        {
+            ip = NULL;
+        }
+        try
+        {
+            f = static_cast<float>(c);
+            fp = &f;
+        }
+        catch(...)
+        {
+            fp = NULL;
+        }
+        try
+        {
+            d = static_cast<double>(c);
+            dp = &d;
+        }
+        catch(...)
+        {
+            dp = NULL;
+        }
     }
+    else
+    {
+        try 
+        {
+            c = ScalarConverter::convertToChar(str);
+            cp = &c;
+        } 
+        catch(...) 
+        {
+            cp = NULL;
+        }
 
-	// INT CONVERSION
-    try 
-	{
-        i = convertToInt(str);
-        std::cout << "int: " << i << std::endl;
-    } 
-	catch(...) 
-	{
-        std::cout << "int: impossible" << std::endl;
-    }
+        try 
+        {
+            i = ScalarConverter::convertToInt(str);
+            ip = &i;
+        } 
+        catch(...) 
+        {
+            ip = NULL;
+        }
 
-	// FLOAT CONVERSION
-    try 
-	{
-        f = convertToFloat(str);
-        std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f" << std::endl;
-    } 
-	catch(...) 
-	{
-        std::cout << "float: impossible" << std::endl;
-    }
+        try 
+        {
+            f = ScalarConverter::convertToFloat(str);
+            fp = &f;
+        } 
+        catch(...) 
+        {
+            fp = NULL;
+        }
 
-	// DOUBLE CONVERSION
-    try 
-	{
-        d = convertToDouble(str);
-        std::cout << std::fixed << std::setprecision(1) << "double: " << d << std::endl;
+        try 
+        {
+            d = ScalarConverter::convertToDouble(str);
+            dp = &d;
+        }
+        catch(...) 
+        {
+            dp = NULL;
+        }
     }
-	catch(...) 
-	{
-	    std::cout << "double: impossible" << std::endl;
-	}
+    printingMachine(cp, ip, fp, dp);
 }

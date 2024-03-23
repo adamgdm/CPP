@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <cfloat>
+#include <cmath>
 
 #define RED "\033[31m"
 #define BOLD "\033[1m"
