@@ -24,12 +24,10 @@ typedef struct t_data
 
 class ScalarConverter
 {
-	public:
+	private:
 		ScalarConverter();
-		~ScalarConverter();
-		ScalarConverter(const ScalarConverter &other);
-		ScalarConverter &operator=(const ScalarConverter &other);
-
+	
+	public:
 		// converters
 		static char *convertToChar(const std::string &str);
 		static int *convertToInt(const std::string &str);
