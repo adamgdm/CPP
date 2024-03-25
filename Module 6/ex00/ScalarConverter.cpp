@@ -26,98 +26,98 @@ char *ScalarConverter::convertToChar(const std::string &str)
 {
     char* end;
     char *result;
-    char* cstr = stringToCharPtr(str);
-    double num = std::strtol(cstr, &end, 10);
+    char* string = stringToCharPtr(str);
+    double num = std::strtol(string, &end, 10);
 
     try
     {   
-        if (end == cstr || !(isValidNumberF(end)))
+        if (end == string || !(isValidNumberF(end)))
             throw std::invalid_argument("Invalid float: " + str);
     }
     catch (...)
     {
-        delete[] cstr;
+        delete[] (string);
         return (NULL);
     }
 
     result = new char;
     *result = static_cast<char>(num);
-    delete[] cstr;
-    return result;
+    delete[] (string);
+    return (result);
 }
 
 int *ScalarConverter::convertToInt(const std::string &str)
 {
     char* end;
     int *result;
-    char* cstr = stringToCharPtr(str);
-    double num = std::strtod(cstr, &end);
+    char* string = stringToCharPtr(str);
+    double num = std::strtod(string, &end);
 
     try 
     {
-        if (end == cstr || (*end != '\0' && *end != 'f' && *end != 'F') || (*(end + 1) != '\0'))
+        if (end == string || (*end != '\0' && *end != 'f' && *end != 'F') || (*(end + 1) != '\0'))
             throw std::invalid_argument("Invalid int: " + str);
         if (num < INT_MIN || num > INT_MAX || num != num)
             throw std::invalid_argument("Invalid int: " + str);
     }
     catch (...)
     {
-        delete[] cstr;
+        delete[] (string);
         return (NULL);
     }
 
     result = new int;
     *result = static_cast<int>(num);
-    delete[] cstr;
-    return result;
+    delete[] (string);
+    return (result);
 }
 
 float *ScalarConverter::convertToFloat(const std::string &str)
 {
     char* end;
     float *result;
-    char* cstr = stringToCharPtr(str);
-    double num = std::strtod(cstr, &end);
+    char* string = stringToCharPtr(str);
+    double num = std::strtod(string, &end);
 
     try
     {
-        if (end == cstr || !isValidNumber(end))
+        if (end == string || !isValidNumber(end))
             throw std::invalid_argument("Invalid float: " + str);
     }
     catch(...)
     {
-        delete[] cstr;
+        delete[] (string);
         return (NULL);
     }
 
     result = new float;
     *result = static_cast<float>(num);
-    delete[] cstr;
-    return result;
+    delete[] (string);
+    return (result);
 }
 
 double *ScalarConverter::convertToDouble(const std::string &str)
 {
     char* end;
     double *result;
-    char* cstr = stringToCharPtr(str);
-    double num = std::strtod(cstr, &end);
+    char* string = stringToCharPtr(str);
+    double num = std::strtod(string, &end);
 
     try 
     {
-        if (end == cstr || !isValidNumber(end))
+        if (end == string || !isValidNumber(end))
             throw std::invalid_argument("Invalid double: " + str);
     }
     catch (...)
     {
-        delete[] cstr;
+        delete[] (string);
         return (NULL);
     }
 
     result = new double;
     *result = static_cast<double>(num);
-    delete[] cstr;
-    return result;
+    delete[] (string);
+    return (result);
 }
 
 void printingMachine(char* c, int* i, float* f, double* d);
@@ -129,7 +129,7 @@ void ScalarConverter::convert(const std::string &str)
     float*  fp = NULL;
     double* dp = NULL;
 
-    if (str.length() == 1 && !isdigit(str[0]))
+    if (ft_strlen(str) == 1 && !isdigit(str[0]))
     {
         char c = str[0];
         cp = new char(static_cast<int>(c));
