@@ -16,13 +16,13 @@
 ### Namespaces
 - Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when using libraries.
 - Namespaces are defined using the `namespace` keyword followed by the namespace name:
-```
+```C++
 namespace my_namespace {
     // code here
 }
 ```
 - Namespaces can be nested:
-```
+```C++
 namespace outer_namespace {
     namespace inner_namespace {
         // code here
@@ -33,7 +33,7 @@ namespace outer_namespace {
 ### Classes
 - Classes are user-defined data types that can contain data members and member functions.
 - Classes are defined using the `class` keyword followed by the class name:
-```
+```C++
 class MyClass {
     // code here
 }
@@ -52,7 +52,7 @@ class MyClass {
     - Static members are shared by all objects of the class.
     - Static members can be accessed using the class name.
 - The Syntax for defining a class is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -71,7 +71,7 @@ class MyClass
 - Member functions can be defined inside the class definition or outside the class definition.
 
 The syntax for defining a member function inside the class definition is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -82,7 +82,7 @@ class MyClass
 ```
 
 In case the member function is defined outside the class definition, the syntax is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -118,7 +118,7 @@ void MyClass::myFunction() {
 - These lists are commonly used to initialize const data members and reference data members, that cannot be initialized later on in the constructor body or anywhere else.
 
 The syntax for using initialization lists is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -166,7 +166,7 @@ class MyClass
 - Pointers to members can be used to access the members of a class using the pointer.
 
 The syntax for declaring a pointer to a member is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -177,7 +177,7 @@ int MyClass::*ptr = &MyClass::x;
 ```
 
 The syntax for delcaring a pointer to a member function is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -195,7 +195,7 @@ void (MyClass::*ptr)() = &MyClass::myFunction;
 - References are aliases for variables.
 - References are used to pass arguments to functions by reference.
 - References are declared using the `&` symbol.
-```
+```C++
 int x = 10;
 // To declare a reference to x, we use the & symbol as follows:
 int &y = x;
@@ -209,7 +209,7 @@ int &y = x;
 - They are a substitute for long if-else chains.
 
 - The syntax for a switch statement is:
-```
+```C++
 switch (expression) 
 {
     case value1:
@@ -223,7 +223,7 @@ switch (expression)
 }
 ```
 - This code is equivalent to:
-```
+```C++
 if (expression == value1) 
 {
     // code here
@@ -247,7 +247,7 @@ if (expression == value1)
 - In C++, Polymorphism of function can be achieved by declaring multiple functions with the same name but different parameters.
 - This is known as function overloading.
 
-```
+```C++
 class MyClass 
 {
     public:
@@ -278,7 +278,7 @@ class MyClass
 - Operator overloading is achieved by defining a function that is called when an operator is used with a user-defined data type.
 
 The syntax for operator overloading is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -311,7 +311,7 @@ class MyClass
 - The default constructor is used to initialize the data members of the class.
 
 The syntax for defining a default constructor is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -326,7 +326,7 @@ class MyClass
 - The default constructor can be overloaded to accept arguments.
 
 In case of defining a default constructor outside the class definition, the syntax is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -346,7 +346,7 @@ MyClass::MyClass()
 - The copy constructor is called when an object is passed by value to a function, returned by value from a function, or when an object is created as a copy of another object.
 
 The syntax for defining a copy constructor is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -358,7 +358,7 @@ class MyClass
 ```
 
 - Like the default constructor, the copy constructor does not have a return type and can be overloaded to accept arguments and its syntax if defined outside the class definition is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -379,7 +379,7 @@ MyClass::MyClass(const MyClass &obj)
 - The difference between the copy constructor and the copy assignment operator is that the copy constructor is called when an object is created as a copy of another object, while the copy assignment operator is called when an object is assigned the value of another object. Otherwise, they are very similar.
 
 The syntax for defining a copy assignment operator is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -393,7 +393,7 @@ class MyClass
 
 - The copy assignment operator returns a reference to the object that is being assigned the value.
 - The copy assignment operator can be overloaded to accept arguments and its syntax if defined outside the class definition is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -414,7 +414,7 @@ MyClass &MyClass::operator=(const MyClass &obj)
 - The destructor is called when an object goes out of scope, is deleted, or when the program terminates.
 
 The syntax for defining a destructor is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -428,7 +428,7 @@ class MyClass
 - The destructor does not take any arguments and does not have a return type.
 
 In case of defining a destructor outside the class definition, the syntax is:
-```
+```C++
 class MyClass 
 {
     public:
@@ -446,7 +446,7 @@ MyClass::~MyClass()
 - The Orthodox Canonical Class Form is a set of rules that define how a class should be implemented in C++.
 
 An orthodox class should be implemented as follows:
-```
+```C++
 class MyClass 
 {
     private:
@@ -493,7 +493,7 @@ MyClass::~MyClass()
 - The new class is called the child class or derived class.
 
 Example:
-```
+```C++
 
 // We will attempt to create a class named Phone
 // The Phone class will have a Name, Model, and Price data members
@@ -531,7 +531,7 @@ class Samsung : public Phone
 ```
 
 - As we can see from the example above, the syntax for inheriting from a class is:
-```
+```C++
 class DerivedClass : accessSpecifier BaseClass
 {
     // code here
@@ -567,7 +567,7 @@ class DerivedClass : accessSpecifier BaseClass
 - If the access specifier is `private`, the base class members are inherited as private members in the derived class, which means they are not accessible from outside the class or by derived classes.
 
 To visualize this better, let's consider the following example:
-```
+```C++
 class Base {
 public:
     int publicMember;
@@ -607,7 +607,7 @@ class Derived_Private : private Base {
 
 - Multiple inheritance is a type of inheritance in which a class inherits from more than one base class.
 - The syntax for multiple inheritance is:
-```
+```C++
 class Derived : public Base1, public Base2
 {
     // code here
@@ -619,7 +619,7 @@ class Derived : public Base1, public Base2
 - Multilevel inheritance is a type of inheritance in which a class inherits from a base class, and the derived class is used as a base class for another class.
 
 Example:
-```
+```C++
 class Base {
     // code here
 };
@@ -638,7 +638,7 @@ class Derived2 : public Derived1 {
 - Hierarchical inheritance is a type of inheritance in which more than one derived class inherits from a single base class.
 
 Example:
-```
+```C++
 class Base {
     // code here
 };
@@ -664,7 +664,7 @@ class Derived2 : public Base {
 - Subtype polymorphism allows us to write code that is more flexible and reusable.
 
 Example:
-```
+```C++
 class Animal {
     public:
         virtual void makeSound() = 0;
@@ -705,7 +705,7 @@ class Cat : public Animal {
 
 - A pure virtual function is a virtual function that has no implementation.
 - Pure virtual functions are declared using the `= 0` syntax.
-```
+```C++
 class Animal {
     public:
         virtual void makeSound() = 0;
@@ -721,7 +721,7 @@ class Animal {
 - Interfaces are used to achieve polymorphism and code reusability.
 
 Example:
-```
+```C++
 class Device {
     public:
         virtual void turnOn() = 0;
@@ -757,7 +757,7 @@ class TV : public Device {
 - Exceptions are thrown when an error occurs and are caught by an exception handler.
 
 The syntax for doing so is:
-```
+```C++
 try 
 {
     // code that may throw an exception
@@ -775,7 +775,7 @@ catch (int e)
 - The `catch` block is used to catch the exception and handle it. The catch block takes an argument that specifies the type of exception that it can catch. Note that the catch block cannot catch an exception unless there is a try before it.
 
 In case we want to catch all exceptions, we can use the `catch` block without any arguments:
-```
+```C++
 try 
 {
     // code that may throw an exception
@@ -811,7 +811,7 @@ Example:
 - Static cast is not safe, it does not perform any runtime checks to ensure that the conversion is valid.
 
 - The syntax for static cast is:
-```
+```C++
 int i = 10;
 float f = static_cast<float>(i);
 ```
@@ -825,7 +825,7 @@ float f = static_cast<float>(i);
 - Dynamic cast is safe
 
 - The syntax for dynamic cast is:
-```
+```C++
 Base *base = new Derived();
 Derived *derived = dynamic_cast<Derived*>(base);
 ```
@@ -837,7 +837,7 @@ Derived *derived = dynamic_cast<Derived*>(base);
 - Const cast is not safe, it can be used to modify a const variable.
 
 - The syntax for const cast is:
-```
+```C++
 const int x = 10;
 int y = const_cast<int>(x);
 ```
@@ -849,7 +849,7 @@ int y = const_cast<int>(x);
 - Reinterpret cast is used to convert between unrelated types, such as converting a pointer to an integer.
 
 - The syntax for reinterpret cast is:
-```
+```C++
 int i = 10;
 char *c = reinterpret_cast<char*>(&i);
 ```

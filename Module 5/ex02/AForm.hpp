@@ -16,6 +16,7 @@ class Form
 		const int reqSignGrade;
 		const int reqExecGrade;
 	public:
+		Form();
 		Form(std::string name, const int reqSign, const int reqExec);
 		Form(const Form &other);
 		~Form();

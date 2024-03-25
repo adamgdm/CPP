@@ -1,5 +1,10 @@
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() : name("default"), grade(150)
+{
+
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
 {
 	if (grade < 1)
@@ -37,18 +42,18 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (grade <= 1)
+	if (this->grade <= 1)
 		throw GradeTooHighException();
 	else
-		--grade;
+		this->grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (grade >= 150)
+	if (this->grade >= 150)
 		throw GradeTooLowException();
 	else
-		++grade;
+		this->grade++;
 }
 
 void Bureaucrat::signForm(Form &doc)

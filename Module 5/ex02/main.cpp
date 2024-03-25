@@ -62,6 +62,5 @@ int main()
     Noob.executeForm(presidentialForm);
 
 	std::cout << std::endl;
-
-    return 0;
+    return (0);
 }

@@ -1,5 +1,10 @@
 #include "AForm.hpp"
 
+Form::Form() : name("Default Form"), reqSignGrade(150), reqExecGrade(150)
+{
+	this->isSigned = false;
+}
+
 Form::Form(std::string name, const int reqSign, const int reqExec) : name(name), reqSignGrade(reqSign), reqExecGrade(reqExec)
 {
 	this->isSigned = false;

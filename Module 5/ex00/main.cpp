@@ -41,6 +41,29 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
+    // testing incrementing too high
 
-    return 0;
+    try
+    {
+        Bureaucrat b4("Lmki tourabi", 1);
+        b4.incrementGrade();
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+
+    // testing decrementing too low
+
+    try
+    {
+        Bureaucrat b5("Lmki tourabi", 150);
+        b5.decrementGrade();
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+
+    return (0);
 }

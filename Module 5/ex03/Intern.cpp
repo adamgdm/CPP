@@ -12,13 +12,12 @@ Intern::~Intern()
 
 Intern::Intern(const Intern& copy)
 {
-	*this = copy; 
+	(void)copy;
 }
 
 Intern &Intern::operator=(const Intern &copy)
 {
-	if (this != &copy)
-		(*this) = (copy);
+	(void)copy;
 	return (*this);
 }
 
