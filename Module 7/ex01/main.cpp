@@ -15,6 +15,12 @@ template <typename T> void print(T &i)
     std::cout << i << std::endl;
 }
 
+template <typename T> void capitalize(T &i)
+{
+    if (i >= 'a' && i <= 'z')
+        i -= 32;
+}
+
 int main()
 {
     int array[] = {1, 2, 3, 4, 5};
@@ -25,6 +31,10 @@ int main()
     
     float array3[] = {1.1, 2.3, 3.5, 4.7, 5.9};
     iter(array3, 5, print);
+
+    char array4[] = {'x', 'y', 'z'};
+    iter(array4, 3, capitalize);
+    iter(array4, 3, print);
 
     return 0;
 }

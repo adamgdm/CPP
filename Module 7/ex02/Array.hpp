@@ -8,7 +8,7 @@ template <typename T>
 class Array 
 {
     private:
-        int *arr;
+        T *arr;
         unsigned int size_arr;
     public:
         Array();
@@ -17,7 +17,7 @@ class Array
         ~Array();
 
         Array &operator=(Array const &other);
-        int &operator[](unsigned int i);
+        T &operator[](unsigned int i);
 
         unsigned int size() const;
 };

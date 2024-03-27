@@ -55,7 +55,7 @@ Array<T> &Array<T>::operator=(Array const &other)
 }
 
 template <typename T>
-int &Array<T>::operator[](unsigned int i)
+T &Array<T>::operator[](unsigned int i)
 {
     if (i < 0 || i >= this->size_arr)
         throw std::exception();
