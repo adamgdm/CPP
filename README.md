@@ -9,6 +9,7 @@
 - [Module 04: Subtype polymorphism, abstract classes, interfaces](#module-04-subtype-polymorphism-abstract-classes-interfaces)
 - [Module 05: Exceptions](#module-05-exceptions)
 - [Module 06: C++ Casts](#module-06-c-casts)
+- [Module 07: Templates](#module-07-templates)
 
 
 ## Module 00: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
