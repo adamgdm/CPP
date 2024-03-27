@@ -853,3 +853,112 @@ int y = const_cast<int>(x);
 int i = 10;
 char *c = reinterpret_cast<char*>(&i);
 ```
+
+## Module 07: Templates
+
+- Templates are a feature of C++ that allows us to write generic code that can work with any data type.
+- Templates allow us to write code that is independent of the data type.
+
+### Function Templates
+
+- Function templates are used to define functions that can work with any data type. They are defined using the `template` keyword followed by the template parameter.
+- The template parameter is a placeholder for the data type that will be used with the function.
+- The template parameter is enclosed in angle brackets `<>`.
+
+- The syntax for defining a function template is:
+```C++
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+```
+
+- The `typename` keyword is used to declare the template parameter, it tells the compiler that `T` is a type parameter.
+
+- The function template can be called with any data type:
+```C++
+int sum = add<int>(10, 20);
+float result = add<float>(10.5, 20.5);
+```
+
+### Class Templates
+
+- Class templates are used to define classes that can work with any data type. They are also defined using the `template` keyword followed by the template parameter.
+
+- The syntax for defining a class template is:
+```C++
+template <typename T>
+class MyClass {
+    private:
+        T x;
+    public:
+        MyClass(T x) : x(x)
+        {
+            // code here
+        }
+};
+```
+
+- The class template can be instantiated with any data type:
+```C++
+MyClass<int> myInt(10);
+MyClass<float> myFloat(10.5);
+```
+
+### Templates with Multiple Parameters
+
+- Templates can have multiple parameters, they are defined by separating the template parameters with a comma. To define a function template with multiple parameters, we use the following syntax:
+```C++
+template <typename T, typename U>
+T add(T a, U b) {
+    return a + b;
+}
+```
+
+To define a class template with multiple parameters, we use the following syntax:
+```C++
+template <typename T, typename U>
+class MyClass {
+    private:
+        T x;
+        U y;
+    public:
+        MyClass(T x, U y) : x(x), y(y)
+        {
+            // code here
+        }
+};
+```
+
+- They can be instantiated with any data type:
+```C++
+int sum = add<int, float>(10, 20.5);
+MyClass<int, float> myClass(10, 20.5);
+```
+
+### Non-type Parameters
+
+- Templates can also have non-type parameters, which are values that are not data types.
+
+- The syntax for defining a function template with a non-type parameter is:
+```C++
+template <int N>
+int multiply(int x) {
+    return x * N;
+}
+```
+
+### Template Specialization
+
+- Template specialization is a feature of C++ that allows us to define a different implementation for a template for a specific data type.
+
+- The syntax for defining a template specialization is:
+```C++
+template <>
+int add<int>(int a, int b) {
+    return a + b + 10;
+}
+```
+
+- This code defines a specialization of the `add` function template for the `int` data type. The specialization adds 10 to the sum of the two integers.
+
