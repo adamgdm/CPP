@@ -963,3 +963,123 @@ int add<int>(int a, int b) {
 
 - This code defines a specialization of the `add` function template for the `int` data type. The specialization adds 10 to the sum of the two integers.
 
+## Module 08: Templated Containers, Iterators and Algorithms
+
+### Templated Containers
+
+- Templated containers are containers that can store any data type.
+- The STL (Standard Template Library) provides a set of templated containers that can be used to store data.
+- Templated containers are defined using the `template` keyword followed by the template parameter.
+- There are several templated containers in the STL (Standard Template Library), the most common ones are:
+    - `vector` : a dynamic array that can store any data type. It is similar to an array but can resize itself automatically when elements are added or removed.
+    - `list` : a doubly linked list that can store any data type. It is similar to a vector but has faster insertion and deletion times. It is slower than a vector when accesing elements, and this is because it is not stored in contiguous memory which means you have to traverse the list to find the element you are looking for. 
+    - `map` : a key-value pair container that can store any data type. It is sorted by key and allows fast lookup of elements by it. 
+    - `set` : a container that stores unique elements in sorted order. It is similar to a map but only stores keys, not key-value pairs.
+    - `queue` : a container that stores elements in a first-in-first-out (FIFO) order.
+    - `stack` : a container that stores elements in a last-in-first-out (LIFO) order.
+
+- The syntax for defining a templated container is:
+
+```C++
+std::container<data_type> container_name;
+
+// Example using a vector
+std::vector<int> vec;
+
+// Example using a list
+std::list<int> lst;
+```
+
+### Iterators
+
+- Iterators are used to iterate over the elements of a container.
+- Iterators are similar to pointers, they point to elements in the container. However, they are more powerful than pointers because they can be used to traverse the container in a safe and efficient way.
+- Iterators are defined using the `begin()` and `end()` functions of the container.
+- The `begin()` function returns an iterator to the first element of the container.
+- The `end()` function returns an iterator to the element after the last element of the container. Note that the element after the last element is a special element that is used to indicate the end of the container. Refer to the example below for more clarification.
+
+```
+Container: [1, 2, 3, 4, 5]
+Iterators:  ^  ^  ^  ^  ^  ^
+            |  |  |  |  |  |
+            |  |  |  |  |  end()
+            |  |  |  |  last element
+            |  |  |  ...
+            |  |  second element
+            |  first element
+            begin()
+```
+
+- Iterators can be used to access the elements of the container using the `*` operator, traverse the container using the `++` operator to move to the next element, and the `--` operator to move to the previous element. They can also be used to compare two iterators using the `==` and `!=` operators. Iterators can also be used to insert and delete elements from the container, and that is done using the `insert()` and `erase()` functions. 
+
+- The `insert()` function is used to insert an element at the position pointed to by the iterator. It takes two arguments, the iterator and the value to be inserted. 
+- The `erase()` function is used to delete an element at the position pointed to by the iterator. It takes one argument, the iterator. Once the element is deleted, the iterator is invalidated and cannot be used anymore.
+
+Here is the syntax for using iterators, as well as some examples of all we have discussed so far:
+
+```C++
+
+std::vector<int> vec = {1, 2, 3, 4, 5};
+
+// To define an iterator we use the following syntax:
+std::iterator it = vec.begin();
+
+// To access the element pointed to by the iterator, we use the * operator:
+int firstElement = *it;
+
+// To move to the next element, we use the ++ operator:
+++it;
+// To move to the previous element, we use the -- operator:
+--it;
+
+// To compare two iterators, we use the == and != operators:
+std::iterator it2 = vec.begin();
+
+if (it == it2) {
+    // iterators are equal
+}
+else {
+    // iterators are not equal
+}
+
+// To insert an element at the position pointed to by the iterator, we use the insert() function:
+vec.insert(it, 10); // this will insert the value 10 at the position pointed to by the iterator
+
+// To delete an element at the position pointed to by the iterator, we use the erase() function:
+vec.erase(it); // this will delete the element at the position pointed to by the iterator
+
+```
+
+### Algorithms
+
+- Algorithms are functions that operate on containers and perform operations such as searching, sorting, and modifying elements.
+- The STL (Standard Template Library) provides a set of algorithms that can be used with containers.
+- Algorithms are defined in the `<algorithm>` header file.
+- Some common algorithms are:
+    - `find()` : searches for a certain value or element in the container. It takes three arguments, the beginning and end iterators of the container, and the value to search for.
+    - `sort()` : sorts the elements of a container. It takes two arguments, the beginning and end iterators of the container.
+    - `reverse()` : reverses the elements of a container, it takes two arguments, the beginning and end iterators of the container.
+    - `count()` : counts the number of occurrences of an element in a container, it takes three arguments, the beginning and end iterators of the container, and the value to count.
+    - `accumulate()` : calculates the sum of the elements of a container, it takes three arguments, the beginning and end iterators of the container, and the initial value of the sum.
+    - `copy()` : copies the elements of one container to another container, it takes three arguments, the beginning and end iterators of the source container, and the beginning iterator of the destination container.
+
+- The syntax for using algorithms is:
+```C++
+std::algorithm_name(container.begin(), container.end(), arguments);
+```
+
+- Here is an example of using the `find()` algorithm to search for an element in a vector:
+```C++
+std::vector<int> vec = {1, 2, 3, 4, 5};
+
+std::vector<int>::iterator it = std::find(vec.begin(), vec.end(), 3);
+
+if (it != vec.end()) 
+{
+    std::cout << "Element found at position: " << it -
+    vec.begin() << std::endl;
+}
+else 
+    std::cout << "Element not found" << std::endl;
+```
+

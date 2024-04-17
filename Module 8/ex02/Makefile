@@ -1,5 +1,5 @@
 CC = c++
-NAME = EasyFind
+NAME = MutantStack
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra #-std=c++98 -fsanitize=address -g3
