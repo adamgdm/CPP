@@ -20,9 +20,9 @@ BitcoinExchange::BitcoinExchange(std::string filename)
     for (int i = 1; std::getline(file, line); i++)
     {
         if (line.size() < 12)
-            std::cerr << "Error at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error at line " << i << ": \"" << line << "\" DATA FILE" << std::endl;
         if (line[4] != '-' || line[7] != '-')
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: Invalid date at line " << i << ": \"" << line << "\" DATA FILE" << std::endl;
         std::string date = line.substr(0, line.find(','));
         std::string value = line.substr(line.find(',') + 1);
 
@@ -34,7 +34,7 @@ BitcoinExchange::BitcoinExchange(std::string filename)
             !std::all_of(monthStr.begin(), monthStr.end(), ::isdigit) ||
             !std::all_of(dayStr.begin(), dayStr.end(), ::isdigit))
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: Invalid date at line " << i << ": \"" << line << "\" DATA FILE" << std::endl;
         }
 
 
@@ -77,13 +77,15 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 void BitcoinExchange::compareVal(std::string datestr, double date, double val)
 {
     std::map<double, double>::iterator it = this->bitcoinValues.lower_bound(date);
-    if (it != this->bitcoinValues.begin())
+    if (it == this->bitcoinValues.end() || it->first != date) 
     {
-        --it; 
-        std::cout << datestr << " => " << val << " => " << it->second * val << std::endl;
+        if (it != this->bitcoinValues.begin())
+            --it;  
+        else 
+        {
+            std::cout << "Error: No previous date found in the map." << std::endl;
+            return;
+        }
     }
-    else
-    {
-        std::cout << "No previous date found in the map." << std::endl;
-    }
+    std::cout << datestr << " => " << val << " => " << it->second * val << std::endl;
 }

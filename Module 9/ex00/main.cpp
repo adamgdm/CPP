@@ -77,22 +77,22 @@ int main(int ac, char **av)
         } 
         if (year < 2009 || year > 2030)
         {
-            std::cerr << "Years ranges from 2009 to 2030, line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: Years ranges from 2009 to 2030, line " << i + 1 << ": \"" << line << "\"" << std::endl;
             continue;
         }
         if ((month == 2 && day > 29 && year % 4 == 0) || (month == 2 && day > 28 && year % 4 != 0))
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: Invalid date at line " << i + 1 << ": \"" << line << "\"" << std::endl;
             continue;
         }
         else if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: Invalid date at line " << i + 1 << ": \"" << line << "\"" << std::endl;
             continue;
         }
         else if (day > 31)
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: Invalid date at line " << i + 1 << ": \"" << line << "\"" << std::endl;
             continue;
         }
         if (value < 0)

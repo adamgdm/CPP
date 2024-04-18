@@ -7,6 +7,7 @@
 #include <regex>
 #include <string>
 #include <ctime>
+#include <iomanip>
 
 class BitcoinExchange
 {
