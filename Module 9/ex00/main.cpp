@@ -33,6 +33,19 @@ int main(int ac, char **av)
     std::getline(file, line);
     for (int i = 1; std::getline(file, line); i++)
     {
+
+        
+        std::string yearStr = line.substr(0, 4);
+        std::string monthStr = line.substr(5, 2);
+        std::string dayStr = line.substr(8, 2);
+        std::string valueStr = line.substr(13);
+        int year = std::atoi(yearStr.c_str());
+        int month = std::atoi(monthStr.c_str());
+        int day = std::atoi(dayStr.c_str());
+        double value = std::atof(valueStr.c_str());
+        std::string date = line.substr(0, 10);
+        std::tm time = {0, 0, 0, day, month - 1, year - 1900, 0, 0, 0, 0, NULL};
+
         if (line.size() < 14 
             || std::count(line.begin(), line.end(), '|') != 1 
             || std::count(line.begin(), line.end(), '.') > 1)
@@ -43,33 +56,23 @@ int main(int ac, char **av)
         // Manually parse the date
         if (line[4] != '-' || line[7] != '-')
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
-
-        
-        std::string yearStr = line.substr(0, 4);
-        std::string monthStr = line.substr(5, 2);
-        std::string dayStr = line.substr(8, 2);
-        std::string valueStr = line.substr(13);
 
         // Check if year, month, and day are all digits
         if (!std::all_of(yearStr.begin(), yearStr.end(), ::isdigit) ||
             !std::all_of(monthStr.begin(), monthStr.end(), ::isdigit) ||
             !std::all_of(dayStr.begin(), dayStr.end(), ::isdigit))
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
 
-        int year = std::atoi(yearStr.c_str());
-        int month = std::atoi(monthStr.c_str());
-        int day = std::atoi(dayStr.c_str());
-        double value = std::atof(valueStr.c_str());
 
         if (month < 1 || month > 12 || day < 1 || day > 31)
         {
-            std::cerr << "Invalid date at line " << i << ": \"" << line << "\"" << std::endl;
+            std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         } 
         if (year < 2009 || year > 2030)
@@ -103,8 +106,6 @@ int main(int ac, char **av)
             continue;
         }
 
-        std::string date = line.substr(0, 10);
-        std::tm time = {0, 0, 0, day, month - 1, year - 1900, 0, 0, 0, 0, NULL};
         double unixTime = std::mktime(&time);
 
         exchange.compareVal(date, unixTime, value);
