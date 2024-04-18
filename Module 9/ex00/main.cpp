@@ -34,6 +34,13 @@ int main(int ac, char **av)
     for (int i = 1; std::getline(file, line); i++)
     {
 
+        if (line.size() < 14 
+            || std::count(line.begin(), line.end(), '|') != 1 
+            || std::count(line.begin(), line.end(), '.') > 1)
+        {
+            std::cerr << "Error: bad input => " << line << std::endl;
+            continue;
+        }
         
         std::string yearStr = line.substr(0, 4);
         std::string monthStr = line.substr(5, 2);
@@ -46,13 +53,6 @@ int main(int ac, char **av)
         std::string date = line.substr(0, 10);
         std::tm time = {0, 0, 0, day, month - 1, year - 1900, 0, 0, 0, 0, NULL};
 
-        if (line.size() < 14 
-            || std::count(line.begin(), line.end(), '|') != 1 
-            || std::count(line.begin(), line.end(), '.') > 1)
-        {
-            std::cerr << "Error at line " << i << ": \"" << line << "\"" << std::endl;
-            continue;
-        }
         // Manually parse the date
         if (line[4] != '-' || line[7] != '-')
         {
