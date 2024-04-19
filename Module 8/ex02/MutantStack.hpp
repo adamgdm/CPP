@@ -4,6 +4,7 @@
 #include <stack>
 #include <iostream>
 #include <algorithm>
+#include <list>
 
 template <typename T>
 class MutantStack : public std::stack<T>
