@@ -968,6 +968,12 @@ int add<int>(int a, int b) {
 
 ### Templated Containers
 
+To define a templated container, we first have to know what a container is:
+
+- A container is a data structure that can store multiple elements of the same data type. They are used to store and organize data in a structured way. They are predefined classes that have several methods to access, insert, remove and manipulate the data stored in them.
+
+That being said, the definition of templated containers is as follows: 
+
 - Templated containers are containers that can store any data type.
 - The STL (Standard Template Library) provides a set of templated containers that can be used to store data.
 - Templated containers are defined using the `template` keyword followed by the template parameter.

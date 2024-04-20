@@ -1,4 +1,5 @@
 #include "Span.hpp"
+
 int main()
 {
     Span sp = Span(5);
@@ -31,9 +32,11 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-    Span largeSpan = Span(10000);
-    std::vector<int> largeNumbers(10000);
-    for (int i = 0; i < 10000; ++i) {
+    unsigned int num = 100000;
+    Span largeSpan = Span(num);
+    std::vector<int> largeNumbers(num);
+
+    for (unsigned int i = 0; i < num; ++i) {
         largeNumbers[i] = i;
     }
     largeSpan.addNumber(largeNumbers.begin(), largeNumbers.end());

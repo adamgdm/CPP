@@ -1,8 +1,8 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int n)
+Span::Span(unsigned int n) : n(n)
 {
-    this->n = n;
+
 }
 
 Span::~Span()
