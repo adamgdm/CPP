@@ -4,7 +4,7 @@ int main(int ac, char **av)
 {
     if (ac != 2)
     {
-        std::cerr << "Usage: ./rpn \"[RPN expression]\"" << std::endl;
+        std::cerr << "USAGE: ./RPN \" ... \"" << std::endl;
         return 1;
     }
     RPN rpn(av[1]);

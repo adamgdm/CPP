@@ -87,5 +87,5 @@ void BitcoinExchange::compareVal(std::string datestr, double date, double val)
             return;
         }
     }
-    std::cout << datestr << " => " << val << " => " << it->second * val << std::endl;
+    std::cout << datestr << " => " << val << " => " << it->second * (float)val << std::endl;
 }

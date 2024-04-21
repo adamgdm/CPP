@@ -2,8 +2,7 @@ CC = c++
 NAME = Pmerge
 SRCS = main.cpp Pmerge.cpp
 OBJS = $(SRCS:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra #-std=c++98 -fsanitize=address -g3
-
+CXXFLAGS = -Wall -Werror -Wextra #-std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJS)

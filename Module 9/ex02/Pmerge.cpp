@@ -22,9 +22,9 @@ Pmerge::Pmerge(const Pmerge &other)
     GRU = other.GRU;
 }
 
-Pmerge &Pmerge::operator=(const Pmerge &other) 
+Pmerge &Pmerge::operator=(const Pmerge &other)
 {
-    if (this != &other) 
+    if (this != &other)
     {
         dq = other.dq;
         GRU = other.GRU;

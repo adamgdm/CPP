@@ -4,18 +4,17 @@
 #include <iostream>
 #include <map>
 #include <fstream>
-#include <regex>
 #include <string>
 #include <ctime>
 #include <iomanip>
+#include <algorithm>
+#include <sstream>
 
 class BitcoinExchange
 {
     private:
         std::string filename;
-        // file stream
         std::ifstream file;
-        // map
         std::map<double, double> bitcoinValues;
     public:
         BitcoinExchange(std::string filename);
