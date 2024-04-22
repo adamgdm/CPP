@@ -11,7 +11,7 @@
 - [Module 06: C++ Casts](#module-06-c-casts)
 - [Module 07: Templates](#module-07-templates)
 - [Module 08: Templated Containers, Iterators and Algorithms](#module-08-templated-containers-iterators-and-algorithms)
-
+- [Module 09: Lambda Expressions](#module-09-lambda-expressions)
 
 ## Module 00: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
 
@@ -1090,3 +1090,73 @@ else
     std::cout << "Element not found" << std::endl;
 ```
 
+## Module 09: STL
+
+- The STL (Standard Template Library) is a set of C++ template classes that provide common data structures and algorithms. It is a powerful library that allows us to write efficient and reusable code. The STL is divided into three main components:
+    - Containers: data structures that store elements.
+    - Algorithms: functions that operate on containers.
+    - Iterators: objects that allow us to traverse the elements of a container.
+- We'll focus on the containers of the STL in this module.
+
+### STL Containers
+
+- The STL provides a set of containers that can be used to store data. There are a lot of container types, among them are:
+    - Sequential Containers: containers that store elements in a linear sequence.
+        - `vector` : a dynamic array that can store any data type.
+        - `list` : a doubly linked list that can store any data type.
+        - `deque` : a double-ended queue that can store any data type.
+        - `array` : a fixed-size array that can store any data type.
+    - Associative Containers: containers that store elements in a sorted order.
+        - `set` : a container that stores unique elements in sorted order.
+        - `map` : a key-value pair container that stores elements in sorted order by key.
+        - `multiset` : a container that stores multiple elements in sorted order.
+        - `multimap` : a key-value pair container that stores multiple elements in sorted order by key.
+    - Unordered Containers: containers that store elements in an unordered way.
+        - `unordered_set` : a container that stores unique elements in an unordered way.
+        - `unordered_map` : a key-value pair container that stores elements in an unordered way.
+        - `unordered_multiset` : a container that stores multiple elements in an unordered way.
+        - `unordered_multimap` : a key-value pair container that stores multiple elements in an unordered way.
+    - Container Adapters: containers that provide a specific interface for accessing elements.
+        - `stack` : a container that stores elements in a last-in-first-out (LIFO) order.
+        - `queue` : a container that stores elements in a first-in-first-out (FIFO) order.
+        - `priority_queue` : a container that stores elements in a priority order.
+
+- Containers are defined in the `<container_name>` header file.
+
+Wrapping up, here is an example of using the `vector` container and all the operations we can perform on it:
+```C++
+#include <vector>
+
+// To define a vector, we use the following syntax:
+std::vector<int> vec = {1, 2, 3, 4, 5};
+
+// We declare an iterator to the beginning of the vector
+std::vector<int>::iterator it = vec.begin();
+
+// A simple for loop to iterate over the elements of the vector
+for (it = vec.begin(); it != vec.end(); ++it) 
+{
+    std::cout << *it << std::endl;
+}
+
+// To insert an element at the end of the vector, we use the push_back() function
+vec.push_back(6);
+
+// To remove the last element of the vector, we use the pop_back() function
+vec.pop_back();
+
+// To insert an element at a specific position, we use the insert() function
+vec.insert(vec.begin() + 2, 10);
+
+// To remove an element at a specific position, we use the erase() function
+vec.erase(vec.begin() + 2);
+
+// To get the size of the vector, we use the size() function
+int size = vec.size();
+
+// We use empty() to check if the vector is empty
+bool empty = vec.empty();
+
+// To empty the vector, we use the clear() function
+vec.clear();
+```
