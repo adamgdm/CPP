@@ -11,7 +11,7 @@
 - [Module 06: C++ Casts](#module-06-c-casts)
 - [Module 07: Templates](#module-07-templates)
 - [Module 08: Templated Containers, Iterators and Algorithms](#module-08-templated-containers-iterators-and-algorithms)
-- [Module 09: Lambda Expressions](#module-09-lambda-expressions)
+- [Module 09: STL](#module-09-stl)
 
 ## Module 00: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
 
