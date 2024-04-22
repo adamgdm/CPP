@@ -37,12 +37,6 @@ int main(int ac, char **av)
         std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
-    if (file.peek() == std::ifstream::traits_type::eof())
-    {
-        std::cerr << "File is empty." << std::endl;
-        file.close();
-        return 0;
-    }
 
     BitcoinExchange exchange("cpp_09/data.csv");
     
@@ -72,10 +66,8 @@ int main(int ac, char **av)
         std::string dayStr = line.substr(8, 2);
         std::string valueStr = line.substr(13);
 
-        if (!std::all_of(yearStr.begin(), yearStr.end(), ::isdigit)
-            || !std::all_of(monthStr.begin(), monthStr.end(), ::isdigit)
-            || !std::all_of(dayStr.begin(), dayStr.end(), ::isdigit)
-            || !checkValueStr(valueStr))
+        if (!exchange.allDigits(yearStr) || !exchange.allDigits(monthStr) 
+            || !exchange.allDigits(dayStr) || !checkValueStr(valueStr))
         {
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
@@ -92,8 +84,6 @@ int main(int ac, char **av)
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }
-
-        // check if the date is valid
         if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
         {
             std::cerr << "Error: bad input => " << line << std::endl;
@@ -116,7 +106,7 @@ int main(int ac, char **av)
         }
 
         std::string date = line.substr(0, 10);
-        std::tm time = {0, 0, 0, day, month - 1, year - 1900, 0, 0, 0, 0, NULL};
+        std::tm time = {0, 0, 0, day, month - 1, year - 1900, 0, 0, 0, 0, 0};
         double unixTime = std::mktime(&time);
 
         exchange.compareVal(date, unixTime, value);

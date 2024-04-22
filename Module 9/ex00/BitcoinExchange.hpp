@@ -22,7 +22,9 @@ class BitcoinExchange
         BitcoinExchange(const BitcoinExchange &other);
         BitcoinExchange &operator=(const BitcoinExchange &other);
 
-        void compareVal(std::string datestr, double val1, double val2);
+        bool allDigits(const std::string& str);
+
+        void compareVal(std::string datestr, double date, double val);
 };
 
 #endif

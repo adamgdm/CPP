@@ -23,7 +23,7 @@ RPN::RPN(std::string str)
         else if (*it == '+' || *it == '-' || *it == '*' || *it == '/') 
         {
             if (heap.size() < 2) 
-                printAndExit("Machaakiiiill", 1);
+                printAndExit("Error: Attempting to perform calculation with less than 2 elements.", 1);
             op2 = heap.top(); 
             heap.pop();
             op1 = heap.top(); 
@@ -85,5 +85,5 @@ double RPN::getRes()
         printAndExit("Stack is empty", 0);
     if (heap.size() > 1)
         printAndExit("Error: Invalid expression", 1);
-    return heap.top();
+    return (heap.top());
 }

@@ -3,7 +3,7 @@ NAME = Pmerge
 SRCS = main.cpp Pmerge.cpp
 OBJS = $(SRCS:.cpp=.o)
 HDRS = Pmerge.hpp
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra #-std=c++98
 
 all: $(NAME)
 
