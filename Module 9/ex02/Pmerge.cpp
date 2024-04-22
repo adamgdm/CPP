@@ -5,7 +5,10 @@ Pmerge::Pmerge(int ac, char **av)
     for (int i = 1; i < ac; i++) 
     {
         if (std::isdigit(*av[i]) == 0 && *av[i] != '+' && *av[i] != '-') 
-            throw std::invalid_argument("Invalid argument");
+        {
+            std::cerr << "Error: Invalid character" << std::endl;
+            exit(1);
+        }
         dq.push_back(std::atoi(av[i]));
         GRU.push_back(std::atoi(av[i]));
     }
@@ -77,7 +80,7 @@ void Pmerge::sortdq()
     std::time_t start = std::clock();
     sort_deque(this->dq.begin(), this->dq.end());
     std::time_t end = std::clock();
-    this->total_dq = end - start;
+    this->total_dq = 1000000.0 * (end - start) / CLOCKS_PER_SEC;
 }
 
 void Pmerge::sortgru() 
@@ -85,7 +88,7 @@ void Pmerge::sortgru()
     std::time_t start = std::clock();
     sort_vector(this->GRU.begin(), this->GRU.end());
     std::time_t end = std::clock();
-    this->total_gru = end - start;
+    this->total_gru = 1000000.0 * (end - start) / CLOCKS_PER_SEC;
 }
 
 void Pmerge::print_deque() 
@@ -105,13 +108,13 @@ void Pmerge::print_vector()
 void Pmerge::print_time_dq()
 {
     std::cout << "Time to process a range of " << this->dq.size() 
-              << " elements with std::deque is: " << std::fixed << std::setprecision(6) 
-              << this->total_dq / 1000000.0 << " us" << std::endl;
+              << " elements with std::deque is: " << std::fixed << std::setprecision(5) 
+              << this->total_dq << " us" << std::endl;
 }
 
 void Pmerge::print_time_gru()
 {
     std::cout << "Time to process a range of " << this->GRU.size() 
-              << " elements with std::vector is: " << std::fixed << std::setprecision(6) 
-              << this->total_gru / 1000000.0 << " us" << std::endl;
+              << " elements with std::vector is: " << std::fixed << std::setprecision(5) 
+              << this->total_gru << " us" << std::endl;
 }

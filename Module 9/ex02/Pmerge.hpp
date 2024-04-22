@@ -12,7 +12,6 @@
 class Pmerge
 {
     private:
-        //starting time in microseconds
         std::deque<int>     dq;
         std::vector<int>    GRU;
         std::clock_t        total_dq;
@@ -37,4 +36,4 @@ class Pmerge
         void print_time_gru();
 };
 
-#endif
+#endif  
